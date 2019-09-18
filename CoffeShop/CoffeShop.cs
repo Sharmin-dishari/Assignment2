@@ -12,19 +12,90 @@ namespace CoffeShop
 {
     public partial class CoffeShop : Form
     {
+        List<string> boxes = new List<string> { };
+       
+        int s = 0;
+        string customerIndex = "";
+        string addressIndex = "";
+        string priceIndex = "";
+        int totalIndex = 0;
         private int quantity = 0;
         private int order = 0;
-        private int total = 0;
-        string name = "";
-        string adress = "";
-        int contact = 0;
-        string price = "";
+        int contacts = 0;
+        
+   
+        
         public CoffeShop()
         {
             InitializeComponent();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+                Input();
+            try
+            {
+                quantity = Convert.ToInt32(QuantityNumericUpDown.Text);
+                order = Convert.ToInt32(OrderComboBox.Text);
+                totalIndex = quantity * order;
+                RichTextBox.Text = "Name:" + customerIndex + "\n" + "Contact No:" + contacts + "\n" + "Adress:" + addressIndex + "\n" + "Order:" + priceIndex + "\n" + "Quantity:" + quantity + "\n" + "Total Price:" + totalIndex.ToString();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Error!!!");
+            }
+
+            finally
+            {
+                Reset();
+            }
+
+        }
+
+        private void RichTextBox_TextChanged(object sender, EventArgs e)
+
+        {
+        }
+        private void Reset()
+        {
+            CusNameTextBox.Text = "";
+            ContactTextBox.Text = "";
+            AdressTextBox.Text = "";
+            PriceComboBox.Text = "";
+            OrderComboBox.Text = "";
+            QuantityNumericUpDown.Text = "";
+
+        }
+
+
+        private void ShowButton_Click(object sender, EventArgs e)
+        {
+            List<string> name = new List<string> { };
+            try
+            {
+                name.Add(CusNameTextBox.Text);
+                Input();
+                quantity = Convert.ToInt32(QuantityNumericUpDown.Text);
+                order = Convert.ToInt32(OrderComboBox.Text);
+                totalIndex = quantity * order;
+                RichTextBox.Text +="\n\n"+ "Name:" + customerIndex + "\n" + "Contact No:" + contacts + "\n" + "Adress:" + addressIndex + "\n" + "Order:" + priceIndex + "\n" + "Quantity:" + quantity + "\n" + "Total Price:" + totalIndex.ToString()+"\n";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Connection Error!!!");
+
+            }
+            finally
+            {
+                Reset();
+            }
+
+        }
+
+        private void Input()
         {
             if (CusNameTextBox.Text.Trim() == "")
             {
@@ -34,8 +105,8 @@ namespace CoffeShop
             }
             else
             {
-                 name = CusNameTextBox.Text;
-                //RichTextBox.Text = name;
+                customerIndex = CusNameTextBox.Text;
+
             }
 
             if (ContactTextBox.Text.Trim() == "")
@@ -46,8 +117,9 @@ namespace CoffeShop
             }
             else
             {
-                contact = Convert.ToInt32(ContactTextBox.Text);
-               // RichTextBox.Text = contact.ToString();
+                
+               contacts =Convert.ToInt32( ContactTextBox.Text);
+                
             }
             if (AdressTextBox.Text.Trim() == "")
             {
@@ -57,46 +129,32 @@ namespace CoffeShop
             }
             else
             {
-                adress = AdressTextBox.Text;
-                //RichTextBox.Text =adress;
+                addressIndex = AdressTextBox.Text;
+               
             }
             if (PriceComboBox.Text.Trim() == "")
             {
-                MessageBox.Show("Please Enter Your Order");
+                MessageBox.Show("Please Enter Your Info");
                 PriceComboBox.Focus();
                 return;
             }
             else
             {
-                price = PriceComboBox.Text;
+                priceIndex = PriceComboBox.Text;
 
             }
 
-            if (OrderComboBox.Text.Trim() == "")
+            if (String.IsNullOrEmpty(OrderComboBox.Text) || String.IsNullOrEmpty(QuantityNumericUpDown.Text))
             {
-                MessageBox.Show("Please Enter Your Order");
-                OrderComboBox.Focus();
-                return;
+                MessageBox.Show("Order Item and Order Quantity Field Required");
             }
-            if (QuantityNumericUpDown.Text.Trim() == "")
-            {
-                MessageBox.Show("Please Enter Quantity");
-                QuantityNumericUpDown.Focus();
-                return;
-            }
-            else
-            {
-                quantity = Convert.ToInt32(QuantityNumericUpDown.Text);
-                order = Convert.ToInt32(OrderComboBox.Text);
-                total = quantity * order;
-                
-                RichTextBox.Text ="Name:"+name +"\n"+"Contact No:"+ contact +"\n"+"Adress:" + adress +"\n" +"Order:"+price+"\n"+"Quantity:"+quantity+"\n"+"Total Price:"+ total.ToString();
-            }
+            
+       
+        
 
+    }
 
-        }
-
-        private void RichTextBox_TextChanged(object sender, EventArgs e)
+        private void PriceComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

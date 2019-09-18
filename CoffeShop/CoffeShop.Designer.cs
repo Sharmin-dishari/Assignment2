@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.CoffeGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShowButton = new System.Windows.Forms.Button();
+            this.PriceComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.totallabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.QuantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -42,8 +45,6 @@
             this.CusNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.RichTextBox = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.PriceComboBox = new System.Windows.Forms.ComboBox();
             this.CoffeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             // CoffeGroupBox
             // 
             this.CoffeGroupBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.CoffeGroupBox.Controls.Add(this.ShowButton);
             this.CoffeGroupBox.Controls.Add(this.PriceComboBox);
             this.CoffeGroupBox.Controls.Add(this.label6);
             this.CoffeGroupBox.Controls.Add(this.totallabel);
@@ -72,6 +74,39 @@
             this.CoffeGroupBox.TabStop = false;
             this.CoffeGroupBox.Text = "Customer Information";
             // 
+            // ShowButton
+            // 
+            this.ShowButton.Location = new System.Drawing.Point(224, 309);
+            this.ShowButton.Name = "ShowButton";
+            this.ShowButton.Size = new System.Drawing.Size(75, 23);
+            this.ShowButton.TabIndex = 16;
+            this.ShowButton.Text = "Show";
+            this.ShowButton.UseVisualStyleBackColor = true;
+            this.ShowButton.Click += new System.EventHandler(this.ShowButton_Click);
+            // 
+            // PriceComboBox
+            // 
+            this.PriceComboBox.FormattingEnabled = true;
+            this.PriceComboBox.Items.AddRange(new object[] {
+            "Black-120",
+            "Cold-100",
+            "Hot-90",
+            "Regular-80"});
+            this.PriceComboBox.Location = new System.Drawing.Point(124, 162);
+            this.PriceComboBox.Name = "PriceComboBox";
+            this.PriceComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PriceComboBox.TabIndex = 15;
+            this.PriceComboBox.SelectedIndexChanged += new System.EventHandler(this.PriceComboBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Price List";
+            // 
             // totallabel
             // 
             this.totallabel.AutoSize = true;
@@ -82,7 +117,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(149, 309);
+            this.SaveButton.Location = new System.Drawing.Point(135, 309);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 12;
@@ -185,28 +220,6 @@
             this.RichTextBox.Text = "";
             this.RichTextBox.TextChanged += new System.EventHandler(this.RichTextBox_TextChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 165);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Price List";
-            // 
-            // PriceComboBox
-            // 
-            this.PriceComboBox.FormattingEnabled = true;
-            this.PriceComboBox.Items.AddRange(new object[] {
-            "Black-120",
-            "Cold-100",
-            "Hot-90",
-            "Regular-80"});
-            this.PriceComboBox.Location = new System.Drawing.Point(124, 162);
-            this.PriceComboBox.Name = "PriceComboBox";
-            this.PriceComboBox.Size = new System.Drawing.Size(121, 21);
-            this.PriceComboBox.TabIndex = 15;
-            // 
             // CoffeShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +254,7 @@
         private System.Windows.Forms.Label totallabel;
         private System.Windows.Forms.ComboBox PriceComboBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button ShowButton;
     }
 }
 
